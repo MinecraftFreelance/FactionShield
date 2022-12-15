@@ -1,4 +1,4 @@
-package ws.billy.TemplatePlugin.Configuration;
+package ws.billy.FactionShield.Configuration;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

@@ -1,8 +1,8 @@
-package ws.billy.TemplatePlugin.TemplateCommand.Subcommands;
+package ws.billy.FactionShield.TemplateCommand.Subcommands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import ws.billy.TemplatePlugin.CommandHandler.Objects.SubCommand;
+import ws.billy.FactionShield.CommandHandler.Objects.SubCommand;
 
 public class TestSubcommand extends SubCommand {
 	@Override

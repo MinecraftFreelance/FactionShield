@@ -1,4 +1,4 @@
-package ws.billy.TemplatePlugin.Utility.Time;
+package ws.billy.FactionShield.Utility.Time;
 
 import java.util.concurrent.TimeUnit;
 

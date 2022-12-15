@@ -1,10 +1,10 @@
-name: TemplatePlugin
+name: FactionShield
 version: ${project.version}
-main: ws.billy.TemplatePlugin.TemplatePlugin
+main: ws.billy.FactionShield.FactionShield
 author: "BillyDotWS"
-website: "https://github.com/MinecraftFreelance/TemplatePlugin"
+website: "https://github.com/MinecraftFreelance/FactionShield"
 database: true
-description: "TemplatePlugin | made by BillyDotWS"
+description: "FactionShield | made by BillyDotWS"
 api-version: 1.19
 commands:
   template:

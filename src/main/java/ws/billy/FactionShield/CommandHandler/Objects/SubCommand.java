@@ -1,4 +1,4 @@
-package ws.billy.TemplatePlugin.CommandHandler.Objects;
+package ws.billy.FactionShield.CommandHandler.Objects;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.Command;

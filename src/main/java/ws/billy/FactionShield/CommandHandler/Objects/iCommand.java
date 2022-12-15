@@ -1,7 +1,7 @@
-package ws.billy.TemplatePlugin.CommandHandler.Objects;
+package ws.billy.FactionShield.CommandHandler.Objects;
 
 import org.bukkit.command.CommandSender;
-import ws.billy.TemplatePlugin.Configuration.Messages.Messages;
+import ws.billy.FactionShield.Configuration.Messages.Messages;
 
 public interface iCommand {
 

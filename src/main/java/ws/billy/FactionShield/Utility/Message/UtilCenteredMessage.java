@@ -1,4 +1,4 @@
-package ws.billy.TemplatePlugin.Utility.Message;
+package ws.billy.FactionShield.Utility.Message;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

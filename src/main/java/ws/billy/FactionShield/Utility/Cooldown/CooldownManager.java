@@ -1,4 +1,4 @@
-package ws.billy.TemplatePlugin.Utility.Cooldown;
+package ws.billy.FactionShield.Utility.Cooldown;
 
 import java.util.HashMap;
 import java.util.Map;

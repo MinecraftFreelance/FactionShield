@@ -1,17 +1,17 @@
-package ws.billy.TemplatePlugin;
+package ws.billy.FactionShield;
 
 import io.github.classgraph.ClassGraph;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import ws.billy.TemplatePlugin.CommandHandler.Objects.Command;
-import ws.billy.TemplatePlugin.Configuration.YMLConfiguration;
+import ws.billy.FactionShield.CommandHandler.Objects.Command;
+import ws.billy.FactionShield.Configuration.YMLConfiguration;
 
 import java.util.List;
 
-public class TemplatePlugin extends JavaPlugin {
+public class FactionShield extends JavaPlugin {
 
-	private static TemplatePlugin instance;
+	private static FactionShield instance;
 	private static PluginManager pluginManager;
 	private static YMLConfiguration ymlConfiguration;
 	private static YMLConfiguration messagesConfiguration;
@@ -40,7 +40,7 @@ public class TemplatePlugin extends JavaPlugin {
 		return getInstance().getClass().getSimpleName();
 	}
 
-	public static TemplatePlugin getInstance() {
+	public static FactionShield getInstance() {
 		return instance;
 	}
 

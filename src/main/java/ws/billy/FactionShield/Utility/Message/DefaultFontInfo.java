@@ -1,4 +1,4 @@
-package ws.billy.TemplatePlugin.Utility.Message;
+package ws.billy.FactionShield.Utility.Message;
 
 public enum DefaultFontInfo {
 

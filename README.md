@@ -1,6 +1,6 @@
 ![Author banner](https://i.imgur.com/2Pqnm9N.png)
 
-[![AUTHOR - BillyDotWS](https://img.shields.io/static/v1?label=AUTHOR&message=BillyDotWS&color=2ea44f&style=for-the-badge&logo=discord+)](https://billy.ws) [![LinkedIn][linkedin-shield]][linkedin-url] [![Version](https://img.shields.io/github/v/release/MinecraftFreelance/TemplatePlugin?label=VERSION&style=for-the-badge)](https://img.shields.io/github/v/release/MinecraftFreelance/ParkourPlugin?label=VERSION&style=for-the-badge)
+[![AUTHOR - BillyDotWS](https://img.shields.io/static/v1?label=AUTHOR&message=BillyDotWS&color=2ea44f&style=for-the-badge&logo=discord+)](https://billy.ws) [![LinkedIn][linkedin-shield]][linkedin-url] [![Version](https://img.shields.io/github/v/release/MinecraftFreelance/FactionShield?label=VERSION&style=for-the-badge)](https://img.shields.io/github/v/release/MinecraftFreelance/ParkourPlugin?label=VERSION&style=for-the-badge)
 
 ---
 <br>
@@ -9,10 +9,10 @@
   text-align: center;
   line-height: 1;
   ">
-  TemplatePlugin
+  FactionShield
 </h3>
 <p align="center">For Minecraft version(s): x - x</p>
-<p  align="center">A brief description of TemplatePlugin</p>
+<p  align="center">A brief description of FactionShield</p>
 <br>
 <br>
 
@@ -42,7 +42,7 @@ this plugin implements.
 
 | Name | Usage | Description | Cooldown | Permission |
 |------|-------|-------------|----------|------------|
-|/template|/template|Prints out "template plugin is epic" to the player, to show that the plugin is working as intented and the events expected are registered.|5 seconds|TemplatePlugin.command.template|
+|/template|/template|Prints out "template plugin is epic" to the player, to show that the plugin is working as intented and the events expected are registered.|5 seconds|FactionShield.command.template|
 |      |       |             |          |            |
 
 ## ⚙️ Configuration Options
@@ -61,7 +61,7 @@ Multiple tools have been used during development to speed up development and kee
 
 ## 👣 Versioning
 
-Whilst developing this plugin, I have used [Semantic versioning](http://semver.org/) for the current versions of the plugin, see the [list of created versions so far](https://github.com/MinecraftFreelance/TemplatePlugin/tags)!. I have created an automatic versioning system that automatically
+Whilst developing this plugin, I have used [Semantic versioning](http://semver.org/) for the current versions of the plugin, see the [list of created versions so far](https://github.com/MinecraftFreelance/FactionShield/tags)!. I have created an automatic versioning system that automatically
 increments the version (see `.github/workflows/release.yaml`), this automatically increases the version every time a commit is made to the main branch of this repository.
 
 ## 🏗️ Building the plugin

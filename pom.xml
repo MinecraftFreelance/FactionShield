@@ -6,10 +6,10 @@
 
     <!-- Plugin specific details, name, classpath, version -->
     <groupId>ws.billy</groupId>
-    <artifactId>TemplatePlugin</artifactId>
+    <artifactId>FactionShield</artifactId>
     <version>${env.GITHUB_REF_NAME}-v${env.RELEASE_VERSION}+b${env.GITHUB_RUN_NUMBER}</version>
     <packaging>jar</packaging>
-    <name>TemplatePlugin</name>
+    <name>FactionShield</name>
 
     <!-- Java properties -->
     <properties>
@@ -111,7 +111,7 @@
             <version>4.8.149</version>
         </dependency>
 
-        <!-- Extra dependencies required for TemplatePlugin specifically -->
+        <!-- Extra dependencies required for FactionShield specifically -->
         <dependency>
             <groupId>com.github.Jaoow</groupId>
             <artifactId>sql-provider</artifactId>

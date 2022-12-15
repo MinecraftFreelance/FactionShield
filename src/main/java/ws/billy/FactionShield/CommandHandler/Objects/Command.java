@@ -1,12 +1,12 @@
-package ws.billy.TemplatePlugin.CommandHandler.Objects;
+package ws.billy.FactionShield.CommandHandler.Objects;
 
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import ws.billy.TemplatePlugin.Utility.Cooldown.CooldownManager;
-import ws.billy.TemplatePlugin.Configuration.Messages.Messages;
+import ws.billy.FactionShield.Utility.Cooldown.CooldownManager;
+import ws.billy.FactionShield.Configuration.Messages.Messages;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +28,7 @@ public abstract class Command implements CommandExecutor, Listener, TabExecutor,
 		this._description = "A command";
 		this._arguments = 0;
 		this._usage = null;
-		this._permission = Messages.getCustomMessage(_name + "_command_permission", "TemplatePlugin.command." + _name);
+		this._permission = Messages.getCustomMessage(_name + "_command_permission", "FactionShield.command." + _name);
 		this._cooldown = 0;
 		addCommand(this);
 	}

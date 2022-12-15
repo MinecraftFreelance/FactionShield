@@ -1,9 +1,9 @@
-package ws.billy.TemplatePlugin.Utility.Database;
+package ws.billy.FactionShield.Utility.Database;
 
 import com.jaoow.sql.connector.SQLConnector;
 import com.jaoow.sql.connector.type.impl.MySQLDatabaseType;
 import com.jaoow.sql.executor.SQLExecutor;
-import ws.billy.TemplatePlugin.TemplatePlugin;
+import ws.billy.FactionShield.FactionShield;
 
 import java.sql.SQLException;
 
@@ -27,10 +27,10 @@ public class SQLDatabaseConnection {
 
 		try {
 			this._executor = new SQLExecutor(connect(mysql));
-			TemplatePlugin.log("Database connection was successful!");
+			FactionShield.log("Database connection was successful!");
 		} catch (final SQLException e) {
-			TemplatePlugin.error("Error whilst connecting to database, plugin disabled.");
-			TemplatePlugin.getPluginManager().disablePlugin(TemplatePlugin.getInstance());
+			FactionShield.error("Error whilst connecting to database, plugin disabled.");
+			FactionShield.getPluginManager().disablePlugin(FactionShield.getInstance());
 			e.printStackTrace();
 		}
 	}
