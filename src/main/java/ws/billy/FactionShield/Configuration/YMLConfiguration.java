@@ -7,6 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 
 public class YMLConfiguration {
 	private final String _path;
@@ -21,6 +23,10 @@ public class YMLConfiguration {
 		this._path = "plugins/" + jp.getName();
 		this._ymlfile = new File(_path + File.separatorChar + name + ".yml");
 		this._fc = YamlConfiguration.loadConfiguration(this._ymlfile);
+	}
+
+	public Set<String> getKeys() {
+		return getConfig().getKeys(false);
 	}
 
 	/**

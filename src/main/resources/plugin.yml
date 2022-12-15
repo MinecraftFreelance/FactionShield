@@ -3,10 +3,8 @@ version: ${project.version}
 main: ws.billy.FactionShield.FactionShield
 author: "BillyDotWS"
 website: "https://github.com/MinecraftFreelance/FactionShield"
-database: true
 description: "FactionShield | made by BillyDotWS"
-api-version: 1.19
-commands:
-  template:
-    usage: /<command>
-    description: A template command
+api-version: 1.18
+depend:
+  - "Space"
+  - "Factions"

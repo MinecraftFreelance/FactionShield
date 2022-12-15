@@ -4,9 +4,15 @@ import io.github.classgraph.ClassGraph;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import ws.billy.FactionShield.CommandHandler.Objects.Command;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.json.JSONArray;
+import ws.billy.FactionShield.Backups.BackupManager;
 import ws.billy.FactionShield.Configuration.YMLConfiguration;
+import ws.billy.FactionShield.Shield.Shield;
+import ws.billy.FactionShield.Shield.SpaceUtil;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class FactionShield extends JavaPlugin {
@@ -15,6 +21,12 @@ public class FactionShield extends JavaPlugin {
 	private static PluginManager pluginManager;
 	private static YMLConfiguration ymlConfiguration;
 	private static YMLConfiguration messagesConfiguration;
+
+	public static SpaceUtil getSpaceUtil() {
+		return spaceUtil;
+	}
+
+	private static SpaceUtil spaceUtil;
 
 	public static YMLConfiguration getMessagesConfiguration() {
 		return messagesConfiguration;
@@ -44,26 +56,6 @@ public class FactionShield extends JavaPlugin {
 		return instance;
 	}
 
-	/**
-	 * Uses reflection to register commands.
-	 *
-	 * @param plugin        Java Plugin to use for registering the commands.
-	 * @param packageSuffix plugin src path after net.thecookiemc. (e.g. for core, 'cookiecore')
-	 */
-	public static void loadCommands(final JavaPlugin plugin, final String packageSuffix) {
-		final List<Class<Command>> commands = new ClassGraph().acceptPackages("ws.billy." + packageSuffix).enableClassInfo().scan().getSubclasses(Command.class).loadClasses(Command.class);
-
-		commands.forEach(command -> { // Try to register each command
-			try {
-				plugin.getCommand(command.getSimpleName().toLowerCase()).setExecutor(command.newInstance());
-				log("Registered command /" + command.getSimpleName().toLowerCase() + " successfully!");
-			} catch (InstantiationException | IllegalAccessException e) {
-				throw new RuntimeException(e);
-			}
-		});
-
-	}
-
 	@Override
 	public void onLoad() {
 		instance = this;
@@ -87,10 +79,43 @@ public class FactionShield extends JavaPlugin {
 		ymlConfiguration = new YMLConfiguration("config", this);
 		messagesConfiguration = new YMLConfiguration("messages", this);
 
-		// command registers
-		log("Loading plugin commands");
-		loadCommands(this, getPluginName());
+		if (ymlConfiguration.getKeys().size() == 0) {
+			getConfiguration().getConfigField("escape_time", 20);
+		}
 
+		// command registers
+		log("Registering events");
+		spaceUtil = new SpaceUtil();
+		getPluginManager().registerEvents(spaceUtil, this);
+
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				log("Gathering placed shield data");
+				try {
+					restoreBackups();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}.runTaskLater(this, 1);
+
+
+	}
+
+	private void restoreBackups() throws IOException {
+		final List<File> fileList = BackupManager.getBackupsList();
+		for (final File f : fileList) {
+			final JSONArray array = BackupManager.getBackup(f);
+			if (array == null) {
+				return;
+			}
+			final Shield shield = Shield.fromJsonArray(array);
+			if(shield == null) {continue;}
+			shield.setEnabled(true);
+			shield.scheduleChecker();
+		}
+		log(fileList.size() > 0 ? "Finished gathering data for " + fileList.size() + " shields" : "No shields have been placed!");
 	}
 
 }
