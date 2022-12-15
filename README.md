@@ -11,8 +11,8 @@
   ">
   FactionShield
 </h3>
-<p align="center">For Minecraft version(s): x - x</p>
-<p  align="center">A brief description of FactionShield</p>
+<p align="center">For Minecraft version(s): 1.18.2</p>
+<p  align="center">If a faction shield is placed in a faction claim, enemies have 20 seconds to get out of the land</p>
 <br>
 <br>
 
@@ -21,29 +21,11 @@
 This plugin was created as part of a commission. Please refer to the agreed upon terms and conditions for information regarding license agreements, modification ability, upkeep responsibilities etc. This can typically be found on the platform initially contacted on (for example: discord, fiverr).
 
 #### Client contact information:
-
-- Server name: `Server`
-- Server IP: `play.server.com`
-- Discord - `Name#1234`
-- Minecraft - `Name`
+- Discord: `一块饼干#0001`
 
 ## 🗒️ Given Requirements
-
-- [ ] Feature 1
-- [ ] Feature 1
-- [ ] Feature 1
-- [ ] Feature 1
-- [ ] Feature 1
-
-## 🤖 Commands
-
-This plugin implements the `Command` custom abstract class - which is used to simply register commands using a predefined formulae. This makes for quicker development and easier maintenance of the plugin, reducing the checks and code that each class needs to have. Below is a list of commands that
-this plugin implements.
-
-| Name | Usage | Description | Cooldown | Permission |
-|------|-------|-------------|----------|------------|
-|/template|/template|Prints out "template plugin is epic" to the player, to show that the plugin is working as intented and the events expected are registered.|5 seconds|FactionShield.command.template|
-|      |       |             |          |            |
+- [ ] Set up a shield machine on the space plugin api
+- [ ] When someone enters faction land, if the faction has a shield machine, give them 20 seconds to leave.
 
 ## ⚙️ Configuration Options
 
