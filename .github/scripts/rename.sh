@@ -1,0 +1,8 @@
+for f in $(find /tmp -name '*.java' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+for f in $(find /tmp -name '*/*.java' -or -name '*/*.md' -or -name '*/*.yml' -or -name '*/*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt; done
+for f in $(find /tmp -name '*/*/*.java' -or -name '*/*/*.md' -or -name '*/*/*.yml' -or -name '*/*/*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt; done
+for f in $(find /tmp -name '*/*/*/*.java' -or -name '*/*/*/*.md' -or -name '*/*/*/*.yml' -or -name '*/*/*/*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt; done
+for f in $(find /tmp -name '*/*/*/*/*.java' -or -name '*/*/*/*/*.md' -or -name '*/*/*/*/*.yml' -or -name '*/*/*/*/*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt; done
+for f in $(find /tmp -name '*/*/*/*/*/*.java' -or -name '*/*/*/*/*/*.md' -or -name '*/*/*/*/*/*.yml' -or -name '*/*/*/*/*/*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt; done
+for f in $(find /tmp -name '*/*/*/*/*/*/*.java' -or -name '*/*/*/*/*/*/*.md' -or -name '*/*/*/*/*/*/*.yml' -or -name '*/*/*/*/*/*/*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt; done
+for f in $(find /tmp -name '*/*/*/*/*/*/*/*.java' -or -name '*/*/*/*/*/*/*/*.md' -or -name '*/*/*/*/*/*/*/*.yml' -or -name '*/*/*/*/*/*/*/*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt; done

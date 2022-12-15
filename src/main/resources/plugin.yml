@@ -1,0 +1,12 @@
+name: TemplatePlugin
+version: ${project.version}
+main: ws.billy.TemplatePlugin.TemplatePlugin
+author: "BillyDotWS"
+website: "https://github.com/MinecraftFreelance/TemplatePlugin"
+database: true
+description: "TemplatePlugin | made by BillyDotWS"
+api-version: 1.19
+commands:
+  template:
+    usage: /<command>
+    description: A template command

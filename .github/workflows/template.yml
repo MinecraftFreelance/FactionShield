@@ -1,0 +1,52 @@
+name: Rename the project from template
+
+on: [ push ]
+
+permissions: write-all
+
+jobs:
+  rename-project:
+    if: github.run_number == 1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # by default, it uses a depth of 1
+          # this fetches all history so that we can read each commit
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}' | tr '-' '_')" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Rename variables
+        run: |
+          for f in $(find * -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */*/* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */*/*/* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */*/*/*/* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */*/*/*/*/* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */*/*/*/*/*/* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */*/*/*/*/*/*/* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+          for f in $(find */*/*/*/*/*/*/*/* -name '*.java' -or -name '*.xml' -or -name '*.md' -or -name '*.yml' -or -name '*.json'); do sed -i -r 's/TemplatePlugin/'$REPOSITORY_NAME'/g' $f 2> ignored.txt || echo "uwu"; done
+        shell: bash
+
+      - name: Rename files
+        run: |
+          for FILE in ./*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+          for FILE in ./*/*/*/*/*/*/*/*/*; do firstString="$FILE" && secondString=$REPOSITORY_NAME && mv "$FILE" "${firstString/TemplatePlugin/"$secondString"}" 2> ignored.txt || echo "error"; done
+        shell: bash
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "✅ Creating commission readme"
+          push_options: --force
