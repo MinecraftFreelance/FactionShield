@@ -25,7 +25,7 @@ This plugin was created as part of a commission. Please refer to the agreed upon
 
 ## 🗒️ Given Requirements
 - [ ] Set up a shield machine on the space plugin api
-- [ ] When someone enters faction land, if the faction has a shield machine, give them 20 seconds to leave.
+- [x] When someone enters faction land, if the faction has a shield machine, give them 20 seconds to leave.
 
 ## ⚙️ Configuration Options
 
