@@ -31,8 +31,22 @@ This plugin was created as part of a commission. Please refer to the agreed upon
 
 This plugin is configurable based on the client requirements:
 `config.yaml` is generated automatically and has the following configurable options:
+```
+escape_time: 20 # the amount of time players are given to escape
+```
 
-- `configurable` - does x, y, z
+`messages.yaml` is generated automatically and has the following configurable options:
+```
+placed_shield: '&eYou have placed a shield! &cEnemy factions will be punished!' # message sent when a shield is placed
+not_in_faction: '&cYou are not in a faction, join one to be able to place this!' # player is not in a faction
+not_your_land: '&cYou cannot place this outside of your land!' # not the faction of the player's land
+warning_chat_message: '&c{{faction}} has a shield enabled! &eYou will die in {{time}} if you don''t escape!' # warning message
+death_message: '&cWell, you were warned, don''t come back!' # message once the person dies
+delete_message: '&7Your faction shield at &e{{location}} &7has been destroyed!' # a message sent to all faction members when a shield is deleted
+title: 
+  title: '&c&l{{remaining_time}}' # the title (big message) on a player's screen
+  subtitle: '&7Exit this land, or die!' # the subtitle (little message) on a player's screen
+```
 
 ## 🛠️ Tools Used
 
