@@ -1,4 +1,4 @@
-package ws.billy.FactionShield.Shield;
+package ws.billy.FactionShield.Shield.Listeners;
 
 import com.massivecraft.factions.*;
 import com.olliez4.space.energy.Machine;
@@ -18,18 +18,16 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
-import ws.billy.FactionShield.Backups.BackupManager;
 import ws.billy.FactionShield.Configuration.Messages.Messages;
 import ws.billy.FactionShield.FactionShield;
+import ws.billy.FactionShield.Shield.NewShield;
 
 import java.util.Arrays;
 import java.util.Optional;
 
-import static ws.billy.FactionShield.Backups.BackupManager.toJson;
-
 public class SpaceUtil implements Listener {
 
-	final SpaceAPI spaceAPI = new SpaceAPI();
+	public final SpaceAPI spaceAPI = new SpaceAPI();
 	private final String placeMessage = Messages.getCustomMessage("placed_shield", "&eYou have placed a shield! &cEnemy factions will be punished!");
 	private final String notInFactionMessage = Messages.getCustomMessage("not_in_faction", "&cYou are not in a faction, join one to be able to place this!");
 	private final String notYourLand = Messages.getCustomMessage("not_your_land", "&cYou cannot place this outside of your land!");
@@ -38,7 +36,6 @@ public class SpaceUtil implements Listener {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				final PlaceableManager manager = new PlaceableManager(spaceAPI.getSpace());
 				final Optional<Entity> entity = Arrays.stream(location.getChunk().getEntities()).filter(entity1 -> entity1 instanceof ArmorStand).filter(entity1 -> entity1.getTicksLived() < 5).findFirst();
 				if(entity.isEmpty()) {return;}
 				spaceAPI.getSpace().getNetworkManager().attemptRemove(player, (ArmorStand) entity.get());
@@ -46,23 +43,13 @@ public class SpaceUtil implements Listener {
 		}.runTaskLater(FactionShield.getInstance(), 1);
 	}
 
-	private void createBlock(final FPlayer player, ItemStack itemStack, BlockPlaceEvent e) {
+	private void createBlock(BlockPlaceEvent e) {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				final Machine machine = new ElectronBeltGenerator(spaceAPI.getSpace(), e.getBlock().getLocation(), 0, true);
-				spaceAPI.attemptPlaceMachine(e.getItemInHand(), e, machine);
-				machine.setActive(true);
-				machine.setShowHologram(true);
-				e.getPlayer().sendMessage(placeMessage);
-				machine.setEmitsCoolant(false);
-				machine.setEmitsEnergy(false);
-				machine.setEmitsOxygen(false);
-				machine.setShowParticles(true);
-				final Shield shield = new Shield(player.getFaction(), e.getBlock().getLocation(), machine);
-				BackupManager.saveBackup(toJson(shield), shield.getUuid());
-				shield.setEnabled(true);
-				shield.scheduleChecker();
+				FLocation fLocation = new FLocation(e.getBlock().getLocation());
+				Faction faction = Board.getInstance().getFactionAt(fLocation);
+				NewShield.scheduleChecker(spaceAPI.getMachineByBlock(e.getBlock()), faction);
 			}
 		}.runTaskLater(FactionShield.getInstance(), 10);
 	}
@@ -84,8 +71,8 @@ public class SpaceUtil implements Listener {
 				removeBlock(e.getBlock().getLocation(), fPlayer.getPlayer());
 				return;
 			}
-			removeBlock(e.getBlock().getLocation(), e.getPlayer());
-			createBlock(fPlayer, e.getItemInHand(), e);
+			createBlock(e);
+			e.getPlayer().sendMessage(placeMessage);
 			return;
 		}
 	}
