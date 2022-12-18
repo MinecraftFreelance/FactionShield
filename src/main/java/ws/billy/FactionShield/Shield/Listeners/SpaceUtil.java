@@ -32,6 +32,7 @@ public class SpaceUtil implements Listener {
 	private final String notInFactionMessage = Messages.getCustomMessage("not_in_faction", "&cYou are not in a faction, join one to be able to place this!");
 	private final String notYourLand = Messages.getCustomMessage("not_your_land", "&cYou cannot place this outside of your land!");
 
+	// client insisted on me replacing the block, rather than using a new one, so we have this mess.
 	private void removeBlock(final Location location, final Player player) {
 		new BukkitRunnable() {
 			@Override
@@ -43,6 +44,7 @@ public class SpaceUtil implements Listener {
 		}.runTaskLater(FactionShield.getInstance(), 1);
 	}
 
+	// client insisted on me replacing the machine, rather than using a new one, so we have this mess.
 	private void createBlock(BlockPlaceEvent e) {
 		new BukkitRunnable() {
 			@Override
