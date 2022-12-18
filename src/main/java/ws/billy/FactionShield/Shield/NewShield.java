@@ -21,13 +21,13 @@ public class NewShield {
 
 	private static final List<Player> beingKilled = new ArrayList<>();
 
+	// starts a runnable for each machine
 	public static int start() {
 		NetworkManager manager = FactionShield.getSpaceUtil().spaceAPI.getNetworkManager();
 		int loops = 0;
 		for(EnergyNetwork network : manager.getNetworks()) {
 			for(Machine machine : network.getMachines()) {
 				if(machine.getName().equals("Electron Belt Generator")) {
-					System.out.println("electron belt found");
 					FLocation fLocation = new FLocation(machine.getLocation());
 					Faction faction = Board.getInstance().getFactionAt(fLocation);
 					if(faction == null || faction.isWilderness()) {
@@ -41,7 +41,8 @@ public class NewShield {
 		return loops;
 	}
 
-	private static void kickPersonOut(final FPlayer player, final int time) {
+	// does countdown on person's screen
+	private static void countdown(final FPlayer player, final int time) {
 		if (!player.isInEnemyTerritory() || time < 0) {
 			beingKilled.remove(player.getPlayer());
 			return;
@@ -56,8 +57,9 @@ public class NewShield {
 			killPlayer(player);
 		}
 	}
-
-	public static void kickPersonOut(final Player player, Faction faction) {
+	
+	// handles the initial warning & starts countdown runnable
+	public static void kickPersonOut(final Player player, final Faction faction) {
 		final int[] escapeTime = {FactionShield.getConfiguration().getConfigField("escape_time")};
 		String chatMessage = Messages.getCustomMessage("warning_chat_message", "&c{{faction}} has a shield enabled! &eYou have {{time}} to escape!", faction, escapeTime[0]);
 		player.sendMessage(chatMessage);
@@ -66,13 +68,14 @@ public class NewShield {
 			@Override
 			public void run() {
 				if(!beingKilled.contains(player)) {this.cancel(); return;}
-				kickPersonOut(FPlayers.getInstance().getByPlayer(player), escapeTime[0]);
+				countdown(FPlayers.getInstance().getByPlayer(player), escapeTime[0]);
 				escapeTime[0]--;
 			}
 		}.runTaskTimer(FactionShield.getInstance(), 20, 20);
 	}
 
-	public static void scheduleChecker(Machine machine, Faction faction) {
+	// a checker for each machine
+	public static void scheduleChecker(final Machine machine, final Faction faction) {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
