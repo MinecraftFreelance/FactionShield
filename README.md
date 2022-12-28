@@ -11,21 +11,21 @@
   ">
   FactionShield
 </h3>
-<p align="center">For Minecraft version(s): 1.18.2</p>
-<p  align="center">If a faction shield is placed in a faction claim, enemies have 20 seconds to get out of the land</p>
+<p align="center">Native spigot version: 1.18.2</p>
+<p align="center">Dependency: FactionsUUID & Space (not included)</p>
+<p  align="center">If a faction shield block is placed in a faction claim, enemies have 20 seconds (this time is configurable) to get out of the land</p>
 <br>
 <br>
 
-## 🙏 Client Information
+[![Preview](https://img.youtube.com/vi/miJ5Wsp0Rqc/0.jpg)](https://www.youtube.com/watch?v=miJ5Wsp0Rqc)
 
-This plugin was created as part of a commission. Please refer to the agreed upon terms and conditions for information regarding license agreements, modification ability, upkeep responsibilities etc. This can typically be found on the platform initially contacted on (for example: discord, fiverr).
+## ⚠️ Notice
+This plugin was made public due to a chargeback filed against it, you are welcome to modify it and use it as you wish.
 
-#### Client contact information:
-- Discord: `一块饼干#0001`
-
-## 🗒️ Given Requirements
-- [ ] Set up a shield machine on the space plugin api
-- [x] When someone enters faction land, if the faction has a shield machine, give them 20 seconds to leave.
+## 🗒️ Road Map
+- [x] Replace the neutron generator belt with a custom machine
+- [x] When someone enters faction land, if the faction has a shield machine, give them x seconds to leave.
+- [x] Make the messages customisable (including the title screen, death message etc)
 
 ## ⚙️ Configuration Options
 
@@ -61,8 +61,14 @@ Whilst developing this plugin, I have used [Semantic versioning](http://semver.o
 increments the version (see `.github/workflows/release.yaml`), this automatically increases the version every time a commit is made to the main branch of this repository.
 
 ## 🏗️ Building the plugin
+First of all - input the dependency jars into a folder called `/libs` (`Space.jar` and `Factions.jar` - as these are premium plugins, they are not included within this repository).
 
-This plugin is automatically versioned using a GitHub action (as mentioned above), in order to build the plugin. Create an environment variable called "RELEASE_VERSION" on your machine and give it a value (you can do this using `$RELEASE_VERSION=value` on a Linux/Unix machine.
+This plugin is automatically versioned using a GitHub action (as mentioned above), in order to build the plugin. You will also need to create the following environment variables, this is automatically assigned when forking the repository:
+- `RELEASE_VERSION`: the release version (e.g. 1.0.0)
+- `GITHUB_REF_NAME`: the branch that is being built (e.g. stage)
+- `GITHUB_RUN_NUMBER`: the current build number (e.g. 1)
+- `BUILD_PATH`: the location on your machine to put the jar
+
 
 This Spigot plugin is built using maven, using the provided `pom.xml` file.
 
@@ -70,7 +76,7 @@ This Spigot plugin is built using maven, using the provided `pom.xml` file.
 mvn build
 ```
 
-This will create a jar file in the root directory of the repository, this can be used to put into the `/plugins` folder.
+This will create a jar file in the defined directory of the repository (discussed above), this can be used to put into the `/plugins` folder.
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 
