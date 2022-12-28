@@ -11,16 +11,15 @@
   ">
   FactionShield
 </h3>
-<p align="center">Native spigot version: 1.18.2</p>
-<p align="center">Dependency: FactionsUUID & Space (not included)</p>
-<p  align="center">If a faction shield block is placed in a faction claim, enemies have 20 seconds (this time is configurable) to get out of the land</p>
+<p align="center">This is a spigot plugin with a native spigot version of 1.18.2. It requires FactionsUUID & Space (not included) to run.</p>
+<p  align="center">This plugin works by introducing a placeable block (via Space). If a faction shield block is placed in any faction claim, factions designated as an enemy (using /f enemy [name]) have 20 seconds (this time is configurable) to get out of the land, otherwise they will be killed. This plugin allows all messages to be configured and adds a configurable amount of time to escape.</p>
 <br>
 <br>
 
 [![Preview](https://img.youtube.com/vi/miJ5Wsp0Rqc/0.jpg)](https://www.youtube.com/watch?v=miJ5Wsp0Rqc)
 
 ## ⚠️ Notice
-This plugin was made public due to a chargeback filed against it, you are welcome to modify it and use it as you wish.
+This plugin was made public due to a chargeback filed against it by `BingChlling#0001` / `965716021321293894`, you are welcome to modify it and use it as you wish (including resale). I will not provide any support/updates for this plugin.
 
 ## 🗒️ Road Map
 - [x] Replace the neutron generator belt with a custom machine
